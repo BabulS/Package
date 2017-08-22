@@ -1,0 +1,18 @@
+--- - hosts: ukx02314   
+remote_user : root   
+tasks:      
+  - name: pkg installation        
+  yum:         
+  name: httpd         
+  state: install      
+  - name: service restart        
+  service:            
+  name: httpd            
+  state: restarted        
+  notify:           
+  - restart httpd   
+  handlers:      -
+  name: service restart        
+  service:           
+  name: httpd           
+  state: restart
